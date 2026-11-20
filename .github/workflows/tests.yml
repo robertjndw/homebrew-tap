@@ -1,0 +1,38 @@
+name: tests
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: macos-latest
+    steps:
+      - uses: Homebrew/actions/setup-homebrew@main
+        with:
+          token: ${{ github.token }}
+
+      - uses: actions/checkout@v7
+
+      # Homebrew 6 won't load casks from a third-party tap until it's trusted.
+      - name: Trust tap
+        run: brew trust --tap robertjndw/tap
+
+      - name: Style
+        run: brew style robertjndw/tap
+
+      # Audit only, never install: casks target macOS 27 and the hosted
+      # runners are older, so an install would fail the macOS requirement.
+      # github_prerelease_version is skipped because every Archipel release
+      # is still a GitHub prerelease; drop the flag once a stable one ships.
+      - name: Audit casks
+        run: |
+          for cask in Casks/*.rb; do
+            brew audit --cask --strict --online \
+              --except github_prerelease_version "robertjndw/tap/$(basename "$cask" .rb)"
+          done
