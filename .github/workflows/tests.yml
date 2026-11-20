@@ -13,15 +13,12 @@ jobs:
   audit:
     runs-on: macos-latest
     steps:
+      # In a tap repo this also checks the repo out, links it in as robertjndw/tap and trusts
+      # it. Don't add actions/checkout on top: its auth header clashes with this one and
+      # GitHub answers the fetch with a 400.
       - uses: Homebrew/actions/setup-homebrew@main
         with:
           token: ${{ github.token }}
-
-      - uses: actions/checkout@v7
-
-      # Homebrew 6 won't load casks from a third-party tap until it's trusted.
-      - name: Trust tap
-        run: brew trust --tap robertjndw/tap
 
       - name: Style
         run: brew style robertjndw/tap
