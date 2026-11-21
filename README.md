@@ -21,8 +21,9 @@ brew install --cask archipel
 | Cask | Description |
 | --- | --- |
 | [Archipel](https://github.com/robertjndw/archipel) | Run coding agents in Ghostty terminals, each in its own git worktree |
+| [Memoir](https://github.com/robertjndw/memoir) | Record meetings and transcribe them on-device |
 
-Archipel updates itself via Sparkle, so `brew upgrade` skips it unless you pass `--greedy`.
+Both apps update themselves via Sparkle, so `brew upgrade` skips them unless you pass `--greedy`.
 
 ## Maintaining
 
