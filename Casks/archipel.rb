@@ -1,6 +1,6 @@
 cask "archipel" do
-  version "0.1.0-alpha.8"
-  sha256 "506424f9449df1927e30a038613587f315f1c62d4f387b91e2bed4809ab725fb"
+  version "0.1.0-alpha.9"
+  sha256 "289def6bd18f166a7c947150f2f3fe6dc468e07b71b2db67d998bf8372fa3b43"
 
   url "https://github.com/robertjndw/archipel/releases/download/v#{version}/Archipel-#{version}.dmg"
   name "Archipel"
