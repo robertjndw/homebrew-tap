@@ -1,6 +1,6 @@
 cask "memoir" do
-  version "0.1.0-alpha.2"
-  sha256 "20696aefbddf945360c5972015b00836b627634da5037f94cfdcc5c34d7cc74b"
+  version "0.1.0-alpha.3"
+  sha256 "ca82fd367f0847c8ef51e9a7146f2ad9c70fe13a23ea16277f0c049b7cf16128"
 
   url "https://github.com/robertjndw/memoir/releases/download/v#{version}/Memoir-#{version}.dmg"
   name "Memoir"
